@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SideBarContainer = styled.ul`
   min-height: 100vh;
-  width: 18%;
+  width: 29%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,6 +10,10 @@ export const SideBarContainer = styled.ul`
   list-style-type: none;
   margin-top: 0px;
   background-color: ${props => (props.darkMode ? '#181818' : '#f9f9f9')};
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `
 export const OptionItem = styled.li`
   margin-bottom: 30px;

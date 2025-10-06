@@ -5,10 +5,10 @@ import {GrClose} from 'react-icons/gr'
 import {BiSearchAlt2} from 'react-icons/bi'
 import Loader from 'react-loader-spinner'
 import {
+  BgContainer,
   HomeContainer,
   HomeContentContainer,
   InputBox,
-  VideosContainer,
   LoaderContainer,
   Button,
   BannerContainer,
@@ -21,6 +21,7 @@ import {
   Suggestion,
   RetryButtonInFailure,
   FailureImage,
+  InputContainer,
 } from './styledComponents'
 import ThemeContext from '../../context/ThemeContext'
 import Header from '../Header'
@@ -116,7 +117,7 @@ class Home extends Component {
   renderHomeVideos = () => {
     const {moviesList} = this.state
     return (
-      <VideosContainer>
+      <ul className="videos-container">
         {moviesList.length === 0
           ? this.renderNoSearchResults()
           : moviesList.map(eachMovieDetails => (
@@ -125,7 +126,7 @@ class Home extends Component {
                 eachMovieDetails={eachMovieDetails}
               />
             ))}
-      </VideosContainer>
+      </ul>
     )
   }
 
@@ -160,7 +161,7 @@ class Home extends Component {
           const bannerClass = bannerVisible ? '' : 'hide'
 
           return (
-            <>
+            <BgContainer>
               <Header />
               <HomeContainer darkMode={isDarkTheme} data-testid="home">
                 <SideBar />
@@ -177,29 +178,32 @@ class Home extends Component {
                       alt="nxt watch logo"
                     />
                     <BannerHeading>
-                      Buy Nxt Watch Premium 
+                      Buy Nxt Watch Premium prepaid plans with UPI
                     </BannerHeading>
                     <BannerButton>GET IT NOW</BannerButton>
                   </BannerContainer>
 
-                  <InputBox
-                    id="search"
-                    type="search"
-                    value={searchInputValue}
-                    placeholder="Search"
-                    onChange={this.onChangeSearchInput}
-                  />
-                  <Button
-                    type="button"
-                    data-testid="searchButton"
-                    onClick={this.onSearchButtonClicked}
-                  >
-                    <BiSearchAlt2 />
-                  </Button>
+                  <InputContainer>
+                    <InputBox
+                      id="search"
+                      type="search"
+                      value={searchInputValue}
+                      placeholder="Search"
+                      onChange={this.onChangeSearchInput}
+                    />
+                    <Button
+                      type="button"
+                      data-testid="searchButton"
+                      onClick={this.onSearchButtonClicked}
+                    >
+                      <BiSearchAlt2 />
+                    </Button>
+                  </InputContainer>
+
                   {renderBasedOnApiStatus}
                 </HomeContentContainer>
               </HomeContainer>
-            </>
+            </BgContainer>
           )
         }}
       </ThemeContext.Consumer>

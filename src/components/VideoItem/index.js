@@ -2,10 +2,8 @@ import {Link} from 'react-router-dom'
 import './index.css'
 
 import {
-  ListItem,
   VideoImage,
   DetailsContainer,
-  ProfileContainer,
   Profile,
   AboutContainer,
   Title,
@@ -23,39 +21,41 @@ const VideoItem = props => {
       {value => {
         const {isDarkTheme} = value
         return (
-          <Link
-            to={`/videos/${eachMovieDetails.id}`}
-            className="video-link-item"
-          >
-            <ListItem>
+          <li className="list-item">
+            <Link
+              to={`/videos/${eachMovieDetails.id}`}
+              className="video-link-item"
+            >
               <VideoImage
                 src={eachMovieDetails.thumbnailUrl}
                 alt="video thumbnail"
               />
               <DetailsContainer>
-                <ProfileContainer>
+                <div className="image-container">
                   <Profile
                     src={eachMovieDetails.profileImageUrl}
                     alt="channel logo"
                   />
-                </ProfileContainer>
+                </div>
+
                 <AboutContainer>
                   <Title darkMode={isDarkTheme}>{eachMovieDetails.title}</Title>
-                  <ChannelNameViewCountAndPublishedStyling>
-                    {eachMovieDetails.channelName}
-                  </ChannelNameViewCountAndPublishedStyling>
+
                   <DynamicDataContainer>
                     <ChannelNameViewCountAndPublishedStyling>
-                      {`${eachMovieDetails.viewCount} Views`}
+                      {eachMovieDetails.channelName}
                     </ChannelNameViewCountAndPublishedStyling>
                     <ChannelNameViewCountAndPublishedStyling>
-                      {eachMovieDetails.publishedAt}
+                      . {`${eachMovieDetails.viewCount} Views`}
+                    </ChannelNameViewCountAndPublishedStyling>
+                    <ChannelNameViewCountAndPublishedStyling>
+                      . {eachMovieDetails.publishedAt}
                     </ChannelNameViewCountAndPublishedStyling>
                   </DynamicDataContainer>
                 </AboutContainer>
               </DetailsContainer>
-            </ListItem>
-          </Link>
+            </Link>
+          </li>
         )
       }}
     </ThemeContext.Consumer>

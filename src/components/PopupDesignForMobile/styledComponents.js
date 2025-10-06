@@ -1,17 +1,16 @@
 import styled from 'styled-components'
 
 export const PopupContainer = styled.div`
-  width: 50%;
+  width: 100%;
 `
 export const LogoutButton = styled.button`
-  height: 26px;
+  height: 35px;
   color: ${props => (props.darkMode ? '#ffffff' : '#3b82f6')};
   background-color: ${props => (props.darkMode ? '#181818' : '#ffffff')};
   border: 2px solid ${props => (props.darkMode ? '#ffffff' : '#3b82f6')};
-  border-radius: 3px;
-  width: 65px;
+  border-radius: 5px;
+  width: 100%;
   cursor: pointer;
-  font-weight: 600;
 
   @media screen and (max-width: 767px) {
     display: none;
@@ -35,6 +34,7 @@ export const ModalContainer = styled.div`
 `
 export const ButtonsContainer = styled.div`
   display: flex;
+  justify-content: center;
   margin-top: 25px;
   width: 50%;
 `

@@ -2,20 +2,22 @@ import Popup from 'reactjs-popup'
 import Cookies from 'js-cookie'
 import {withRouter} from 'react-router-dom'
 
+import {BiArrowToRight} from 'react-icons/bi'
+
 import ThemeContext from '../../context/ThemeContext'
 
 import {
   PopupContainer,
-  LogoutButton,
   ModalContainer,
   PopupButton,
   ButtonsContainer,
   WarningMessage,
+  MobileLogoutButton,
 } from './styledComponents'
 
 import 'reactjs-popup/dist/index.css'
 
-const PopupDesign = props => {
+const PopupDesignForMobile = props => {
   const onLogoutClicked = () => {
     const {history} = props
     Cookies.remove('jwt_token')
@@ -32,9 +34,13 @@ const PopupDesign = props => {
             <Popup
               modal
               trigger={
-                <LogoutButton type="button" darkMode={isDarkTheme}>
-                  Logout
-                </LogoutButton>
+                <MobileLogoutButton>
+                  {isDarkTheme ? (
+                    <BiArrowToRight color="white" size={20} />
+                  ) : (
+                    <BiArrowToRight size={20} />
+                  )}
+                </MobileLogoutButton>
               }
             >
               {close => (
@@ -60,4 +66,4 @@ const PopupDesign = props => {
   )
 }
 
-export default withRouter(PopupDesign)
+export default withRouter(PopupDesignForMobile)
